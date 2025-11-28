@@ -1,4 +1,4 @@
-package br.com.lconeto.mercadoportega.presentation.slideshow
+package br.com.lconeto.mercadoportega.slideshow.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

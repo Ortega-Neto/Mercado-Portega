@@ -1,4 +1,4 @@
-package br.com.lconeto.mercadoportega.presentation.slideshow
+package br.com.lconeto.mercadoportega.slideshow.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater

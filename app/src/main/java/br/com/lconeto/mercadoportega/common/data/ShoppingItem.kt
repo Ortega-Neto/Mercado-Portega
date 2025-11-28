@@ -1,4 +1,4 @@
-package br.com.lconeto.mercadoportega.data
+package br.com.lconeto.mercadoportega.common.data
 
 data class ShoppingItem(
     val name: String,

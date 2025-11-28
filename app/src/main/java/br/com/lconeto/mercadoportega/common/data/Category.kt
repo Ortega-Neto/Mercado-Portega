@@ -1,4 +1,4 @@
-package br.com.lconeto.mercadoportega.data
+package br.com.lconeto.mercadoportega.common.data
 
 sealed class Category(val name: String) {
     data object Food : Category("Comida 🍎")

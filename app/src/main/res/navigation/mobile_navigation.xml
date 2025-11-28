@@ -7,19 +7,28 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="br.com.lconeto.mercadoportega.presentation.home.HomeFragment"
+        android:name="br.com.lconeto.mercadoportega.home.presentation.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_shoppingFragment"
+            app:destination="@id/shoppingFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="br.com.lconeto.mercadoportega.presentation.gallery.GalleryFragment"
+        android:name="br.com.lconeto.mercadoportega.gallery.presentation.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="br.com.lconeto.mercadoportega.presentation.slideshow.SlideshowFragment"
+        android:name="br.com.lconeto.mercadoportega.slideshow.presentation.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/shoppingFragment"
+        android:name="br.com.lconeto.mercadoportega.shopping.presentation.ShoppingFragment"
+        android:label="ShoppingFragment" />
 </navigation>
