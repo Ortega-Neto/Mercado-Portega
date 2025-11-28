@@ -51,7 +51,6 @@ class ShoppingFragment : Fragment() {
         if (index != -1) {
             val updatedItem = item.copy(isChecked = !item.isChecked)
             shoppingList[index] = updatedItem
-            shoppingAdapter.updateList(shoppingList)
             reorderList()
         }
     }
