@@ -31,14 +31,14 @@ class ShoppingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val onItemClicked: OnItemClicked = { clickedItem ->
-            toggleItemCheckedState(clickedItem)
-        }
-        shoppingAdapter = ShoppingAdapter(shoppingList, onItemClicked)
         setupRecyclerView()
     }
 
     private fun setupRecyclerView() {
+        val onItemClicked: OnItemClicked = { clickedItem ->
+            toggleItemCheckedState(clickedItem)
+        }
+        shoppingAdapter = ShoppingAdapter(shoppingList, onItemClicked)
         binding.recyclerViewShopping.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = shoppingAdapter
