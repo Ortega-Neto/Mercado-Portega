@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.lconeto.mercadoportega.R
 import br.com.lconeto.mercadoportega.common.data.ShoppingItem
 import br.com.lconeto.mercadoportega.common.data.ShoppingListDataSource
+import br.com.lconeto.mercadoportega.common.domain.extensions.setTitleName
 import br.com.lconeto.mercadoportega.databinding.FragmentShoppingBinding
 import br.com.lconeto.mercadoportega.shopping.domain.OnItemClicked
 import br.com.lconeto.mercadoportega.shopping.domain.ShoppingAdapter
@@ -31,6 +33,7 @@ class ShoppingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setTitleName(getString(R.string.home_shopping))
         setupRecyclerView()
     }
 
