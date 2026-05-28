@@ -1,93 +1,107 @@
 package br.com.lconeto.mercadoportega.common.data
 
-object ShoppingListDataSource {
+import br.com.lconeto.mercadoportega.common.domain.repository.ShoppingRepository
+
+object ShoppingListDataSource : ShoppingRepository {
 
     private fun createItem(name: String, category: Category) = ShoppingItem(name, category)
 
-    fun getInitialList(): List<ShoppingItem> {
-        val food = Category.Food
-        val cleaning = Category.Cleaning
-        val hygiene = Category.Hygiene
+    override fun getShoppingList(): List<ShoppingItem> {
+        return getFoodList() + getCleaningList() + getHygieneList()
+    }
 
+    private fun getFoodList(): List<ShoppingItem> {
+        val category = Category.Food
         return listOf(
-            createItem("Açúcar", food),
-            createItem("Açúcar mascavo", food),
-            createItem("Alho em pó", food),
-            createItem("Arroz", food),
-            createItem("Atum", food),
-            createItem("Aveia em flocos", food),
-            createItem("Azeite", food),
-            createItem("Barrinha de cereal", food),
-            createItem("Batata palha", food),
-            createItem("Batata doce", food),
-            createItem("Batata (comum)", food),
-            createItem("Melita Café", food),
-            createItem("Café", food),
-            createItem("Cachaça", food),
-            createItem("Canela em pó", food),
-            createItem("Cebola", food),
-            createItem("Cerveja", food),
-            createItem("Chocolate", food),
-            createItem("Coca zero", food),
-            createItem("Creme de leite", food),
-            createItem("Doce de leite", food),
-            createItem("Farofa", food),
-            createItem("Feijão", food),
-            createItem("Frango", food),
-            createItem("Granola", food),
-            createItem("Iogurte", food),
-            createItem("Ketchup", food),
-            createItem("Legumes congelados", food),
-            createItem("Leite", food),
-            createItem("Leite condensado", food),
-            createItem("Leite em pó", food),
-            createItem("Macarrão", food),
-            createItem("Manteiga", food),
-            createItem("Milho", food),
-            createItem("Milho de pipoca", food),
-            createItem("Molho de tomate", food),
-            createItem("Mostarda", food),
-            createItem("Noz Moscada", food),
-            createItem("Óleo", food),
-            createItem("Ovos", food),
-            createItem("Pão", food),
-            createItem("Pão de queijo", food),
-            createItem("Pasta de amendoim", food),
-            createItem("Petisco", food),
-            createItem("Queijo", food),
-            createItem("Queijo ralado", food),
-            createItem("Requeijão", food),
-            createItem("Sal", food),
-            createItem("Shoyu", food),
-            createItem("Vinho", food),
-            createItem("YoPro", food),
+            createItem("Açúcar", category),
+            createItem("Açúcar mascavo", category),
+            createItem("Alho em pó", category),
+            createItem("Arroz", category),
+            createItem("Atum", category),
+            createItem("Aveia em flocos", category),
+            createItem("Azeite", category),
+            createItem("Barrinha de cereal", category),
+            createItem("Batata palha", category),
+            createItem("Batata doce", category),
+            createItem("Batata (comum)", category),
+            createItem("Melita Café", category),
+            createItem("Café", category),
+            createItem("Cachaça", category),
+            createItem("Canela em pó", category),
+            createItem("Cebola", category),
+            createItem("Cerveja", category),
+            createItem("Chocolate", category),
+            createItem("Coca zero", category),
+            createItem("Creme de leite", category),
+            createItem("Doce de leite", category),
+            createItem("Farofa", category),
+            createItem("Feijão", category),
+            createItem("Frango", category),
+            createItem("Granola", category),
+            createItem("Iogurte", category),
+            createItem("Ketchup", category),
+            createItem("Legumes congelados", category),
+            createItem("Leite", category),
+            createItem("Leite condensado", category),
+            createItem("Leite em pó", category),
+            createItem("Macarrão", category),
+            createItem("Manteiga", category),
+            createItem("Milho", category),
+            createItem("Milho de pipoca", category),
+            createItem("Molho de tomate", category),
+            createItem("Mostarda", category),
+            createItem("Noz Moscada", category),
+            createItem("Óleo", category),
+            createItem("Ovos", category),
+            createItem("Pão", category),
+            createItem("Pão de queijo", category),
+            createItem("Pasta de amendoim", category),
+            createItem("Petisco", category),
+            createItem("Queijo", category),
+            createItem("Queijo ralado", category),
+            createItem("Requeijão", category),
+            createItem("Sal", category),
+            createItem("Shoyu", category),
+            createItem("Vinho", category),
+            createItem("YoPro", category)
+        )
+    }
 
-            createItem("Álcool", cleaning),
-            createItem("Amaciante", cleaning),
-            createItem("Buchinha azul", cleaning),
-            createItem("Buchinha verde", cleaning),
-            createItem("Detergente", cleaning),
-            createItem("Desinfetante", cleaning),
-            createItem("Limpol", cleaning),
-            createItem("Pato (limpeza)", cleaning),
-            createItem("Pato (vaso)", cleaning),
-            createItem("Pinho Sol", cleaning),
-            createItem("Qboa", cleaning),
-            createItem("Sabão líquido", cleaning),
-            createItem("Saco de lixo", cleaning),
+    private fun getCleaningList(): List<ShoppingItem> {
+        val category = Category.Cleaning
+        return listOf(
+            createItem("Álcool", category),
+            createItem("Amaciante", category),
+            createItem("Buchinha azul", category),
+            createItem("Buchinha verde", category),
+            createItem("Detergente", category),
+            createItem("Desinfetante", category),
+            createItem("Limpol", category),
+            createItem("Pato (limpeza)", category),
+            createItem("Pato (vaso)", category),
+            createItem("Pinho Sol", category),
+            createItem("Qboa", category),
+            createItem("Sabão líquido", category),
+            createItem("Saco de lixo", category)
+        )
+    }
 
-            createItem("Condicionador", hygiene),
-            createItem("Desodorante Dai", hygiene),
-            createItem("Desodorante LC", hygiene),
-            createItem("Escova de Dente", hygiene),
-            createItem("Ob (fluxo alto)", hygiene),
-            createItem("Ob (fluxo médio)", hygiene),
-            createItem("Papel higiênico", hygiene),
-            createItem("Papel toalha", hygiene),
-            createItem("Pasta de dente", hygiene),
-            createItem("Sabonete", hygiene),
-            createItem("Sabonete líquido", hygiene),
-            createItem("Shampoo", hygiene)
+    private fun getHygieneList(): List<ShoppingItem> {
+        val category = Category.Hygiene
+        return listOf(
+            createItem("Algodão", category),
+            createItem("Condicionador", category),
+            createItem("Desodorante Dai", category),
+            createItem("Desodorante LC", category),
+            createItem("Escova de Dente", category),
+            createItem("Ob (fluxo alto)", category),
+            createItem("Ob (fluxo médio)", category),
+            createItem("Papel higiênico", category),
+            createItem("Papel toalha", category),
+            createItem("Pasta de dente", category),
+            createItem("Sabonete", category),
+            createItem("Sabonete líquido", category),
+            createItem("Shampoo", category)
         )
     }
 }
