@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
         binding.homeMakeList.imageContactTitle.setImageResource(R.drawable.ic_shopping_list)
 
         binding.homeShopping.textContactTitle.text = getString(R.string.home_shopping)
-        binding.homeShopping.imageContactTitle.setImageResource(R.drawable.ic_shoppin_car)
+        binding.homeShopping.imageContactTitle.setImageResource(R.drawable.ic_shopping_car)
     }
 
     private fun setupListeners() {
