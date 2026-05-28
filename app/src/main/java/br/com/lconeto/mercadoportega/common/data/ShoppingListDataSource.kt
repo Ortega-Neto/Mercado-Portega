@@ -1,16 +1,14 @@
 package br.com.lconeto.mercadoportega.common.data
 
-import br.com.lconeto.mercadoportega.common.domain.repository.ShoppingRepository
-
-object ShoppingListDataSource : ShoppingRepository {
+object ShoppingListDataSource {
 
     private fun createItem(name: String, category: Category) = ShoppingItem(name, category)
 
-    override fun getShoppingList(): List<ShoppingItem> {
+    fun getDefaultList(): List<ShoppingItem> {
         return getFoodList() + getCleaningList() + getHygieneList()
     }
 
-    private fun getFoodList(): List<ShoppingItem> {
+    fun getFoodList(): List<ShoppingItem> {
         val category = Category.Food
         return listOf(
             createItem("Açúcar", category),
@@ -67,7 +65,7 @@ object ShoppingListDataSource : ShoppingRepository {
         )
     }
 
-    private fun getCleaningList(): List<ShoppingItem> {
+    fun getCleaningList(): List<ShoppingItem> {
         val category = Category.Cleaning
         return listOf(
             createItem("Álcool", category),
@@ -86,7 +84,7 @@ object ShoppingListDataSource : ShoppingRepository {
         )
     }
 
-    private fun getHygieneList(): List<ShoppingItem> {
+    fun getHygieneList(): List<ShoppingItem> {
         val category = Category.Hygiene
         return listOf(
             createItem("Algodão", category),

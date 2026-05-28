@@ -10,6 +10,14 @@
     android:useDefaultMargins="true">
 
     <include
+        android:id="@+id/home_make_list"
+        layout="@layout/component_card_button"
+        android:layout_marginTop="24dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1" />
+
+    <include
         android:id="@+id/home_shopping"
         layout="@layout/component_card_button"
         android:layout_marginTop="24dp"

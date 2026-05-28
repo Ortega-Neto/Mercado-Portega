@@ -1,35 +1,33 @@
 package br.com.lconeto.mercadoportega.shopping.presentation
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import br.com.lconeto.mercadoportega.common.data.ShoppingItem
-import br.com.lconeto.mercadoportega.common.data.ShoppingListDataSource
 import br.com.lconeto.mercadoportega.common.domain.repository.ShoppingRepository
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 class ShoppingViewModel(
-    private val repository: ShoppingRepository = ShoppingListDataSource
+    private val repository: ShoppingRepository,
 ) : ViewModel() {
 
-    private val _shoppingList = MutableLiveData<List<ShoppingItem>>()
-    val shoppingList: LiveData<List<ShoppingItem>> = _shoppingList
-
-    init {
-        loadItems()
-    }
-
-    fun loadItems() {
-        _shoppingList.value = repository.getShoppingList()
-    }
+    val shoppingList: LiveData<List<ShoppingItem>> = repository.getShoppingList()
+        .map { sortList(it) }
+        .asLiveData()
 
     fun toggleItemChecked(item: ShoppingItem) {
-        val currentList = _shoppingList.value.orEmpty().toMutableList()
-        val index = currentList.indexOfFirst { it.name == item.name && it.category == item.category }
+        val currentList = shoppingList.value.orEmpty().toMutableList()
+        val index = currentList.indexOfFirst { (it.name == item.name) && (it.category == item.category) }
 
         if (index != -1) {
             val updatedItem = item.copy(isChecked = !item.isChecked)
             currentList[index] = updatedItem
-            _shoppingList.value = sortList(currentList)
+
+            viewModelScope.launch {
+                repository.saveShoppingList(currentList)
+            }
         }
     }
 

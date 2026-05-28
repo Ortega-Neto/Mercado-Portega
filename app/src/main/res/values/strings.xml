@@ -14,5 +14,10 @@
     <string name="label_placeholder">placeholder</string>
 
     <!--  Home  -->
+    <string name="home_make_list">Fazer lista</string>
     <string name="home_shopping">Fazer compras</string>
+
+    <!--  Selection  -->
+    <string name="selection_title">Criar Lista</string>
+    <string name="selection_save">Salvar Lista</string>
 </resources>

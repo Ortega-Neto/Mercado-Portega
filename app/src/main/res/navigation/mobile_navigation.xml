@@ -13,7 +13,16 @@
         <action
             android:id="@+id/action_nav_home_to_shoppingFragment"
             app:destination="@id/shoppingFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_selectionFragment"
+            app:destination="@id/selectionFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/selectionFragment"
+        android:name="br.com.lconeto.mercadoportega.selection.presentation.SelectionFragment"
+        android:label="@string/selection_title"
+        tools:layout="@layout/fragment_selection" />
 
     <fragment
         android:id="@+id/shoppingFragment"

@@ -1,4 +1,4 @@
-package br.com.lconeto.mercadoportega.shopping.presentation
+package br.com.lconeto.mercadoportega.selection.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,65 +10,69 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.lconeto.mercadoportega.R
 import br.com.lconeto.mercadoportega.common.data.ShoppingDataStore
 import br.com.lconeto.mercadoportega.common.data.ShoppingRepositoryImpl
-import br.com.lconeto.mercadoportega.common.domain.extensions.setTitleName
-import br.com.lconeto.mercadoportega.databinding.FragmentShoppingBinding
+import br.com.lconeto.mercadoportega.databinding.FragmentSelectionBinding
 import br.com.lconeto.mercadoportega.shopping.domain.ShoppingAdapter
 
-class ShoppingFragment : Fragment() {
-    private var _binding: FragmentShoppingBinding? = null
+class SelectionFragment : Fragment() {
+
+    private var _binding: FragmentSelectionBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: ShoppingViewModel by viewModels {
+    private val viewModel: SelectionViewModel by viewModels {
         object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 val dataStore = ShoppingDataStore(requireContext().applicationContext)
                 val repository = ShoppingRepositoryImpl(dataStore)
-                return ShoppingViewModel(repository) as T
+                return SelectionViewModel(repository) as T
             }
         }
     }
 
-    private lateinit var shoppingAdapter: ShoppingAdapter
+    private lateinit var adapter: ShoppingAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentShoppingBinding.inflate(inflater, container, false)
+        _binding = FragmentSelectionBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setTitleName(getString(R.string.home_shopping))
         setupRecyclerView()
+        setupListeners()
         observeViewModel()
     }
 
     private fun setupRecyclerView() {
-        shoppingAdapter = ShoppingAdapter(emptyList()) { clickedItem ->
-            viewModel.toggleItemChecked(clickedItem)
+        adapter = ShoppingAdapter(emptyList()) { item ->
+            viewModel.toggleSelection(item)
         }
-        binding.recyclerViewShopping.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = shoppingAdapter
+        binding.recyclerViewSelection.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            this.adapter = this@SelectionFragment.adapter
+        }
+    }
+
+    private fun setupListeners() {
+        binding.buttonSaveSelection.setOnClickListener {
+            viewModel.saveSelection()
+            viewModel.saveStatus.observe(viewLifecycleOwner) { isSaved ->
+                if (isSaved) {
+                    findNavController().popBackStack()
+                }
+            }
         }
     }
 
     private fun observeViewModel() {
-        viewModel.shoppingList.observe(viewLifecycleOwner) { items ->
-            if (items.isEmpty()) {
-                val navController = findNavController()
-                navController.popBackStack()
-                navController.navigate(R.id.selectionFragment)
-            } else {
-                shoppingAdapter.updateList(items)
-            }
+        viewModel.catalogItems.observe(viewLifecycleOwner) { items ->
+            adapter.updateList(items)
         }
     }
 
