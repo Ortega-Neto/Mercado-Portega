@@ -18,6 +18,7 @@ Manter o arquivo `ShoppingListDataSource.kt` atualizado, organizado por categori
     3. Reordenar os itens dentro desse método alfabeticamente.
 - **Categorias Suportadas**:
     - `food` (Comida 🍎)
+    - `hortifruti` (Hortifruti 🥦)
     - `cleaning` (Produtos de Limpeza 🧽)
     - `hygiene` (Produtos de Higiene 🧴)
 

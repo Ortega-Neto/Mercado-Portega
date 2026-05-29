@@ -5,10 +5,14 @@ object ShoppingListDataSource {
     private fun createItem(name: String, category: Category) = ShoppingItem(name, category)
 
     fun getDefaultList(): List<ShoppingItem> {
-        return getFoodList() + getCleaningList() + getHygieneList()
+        return getFoodList() + getHortifrutiList() + getCleaningList() + getHygieneList()
     }
 
     fun getFoodList(): List<ShoppingItem> {
+        return getFoodListPart1() + getFoodListPart2()
+    }
+
+    private fun getFoodListPart1(): List<ShoppingItem> {
         val category = Category.Food
         return listOf(
             createItem("Açúcar", category),
@@ -18,15 +22,15 @@ object ShoppingListDataSource {
             createItem("Atum", category),
             createItem("Aveia em flocos", category),
             createItem("Azeite", category),
+            createItem("Bacon", category),
             createItem("Barrinha de cereal", category),
             createItem("Batata palha", category),
-            createItem("Batata doce", category),
-            createItem("Batata (comum)", category),
-            createItem("Melita Café", category),
+            createItem("Bife", category),
             createItem("Café", category),
             createItem("Cachaça", category),
             createItem("Canela em pó", category),
-            createItem("Cebola", category),
+            createItem("Carne de Churrasco", category),
+            createItem("Carne Moída", category),
             createItem("Cerveja", category),
             createItem("Chocolate", category),
             createItem("Coca zero", category),
@@ -41,27 +45,63 @@ object ShoppingListDataSource {
             createItem("Legumes congelados", category),
             createItem("Leite", category),
             createItem("Leite condensado", category),
-            createItem("Leite em pó", category),
+            createItem("Leite em pó", category)
+        )
+    }
+
+    private fun getFoodListPart2(): List<ShoppingItem> {
+        val category = Category.Food
+        return listOf(
+            createItem("Linguiça", category),
             createItem("Macarrão", category),
             createItem("Manteiga", category),
+            createItem("Melita Café", category),
             createItem("Milho", category),
             createItem("Milho de pipoca", category),
             createItem("Molho de tomate", category),
+            createItem("Morango Congelado", category),
             createItem("Mostarda", category),
             createItem("Noz Moscada", category),
             createItem("Óleo", category),
             createItem("Ovos", category),
             createItem("Pão", category),
+            createItem("Pão de Forma", category),
             createItem("Pão de queijo", category),
+            createItem("Páprica Doce", category),
+            createItem("Páprica Picante", category),
             createItem("Pasta de amendoim", category),
             createItem("Petisco", category),
+            createItem("Polpa de Açai", category),
             createItem("Queijo", category),
+            createItem("Queijo Gorgonzola", category),
+            createItem("Queijo Parmesão", category),
             createItem("Queijo ralado", category),
             createItem("Requeijão", category),
             createItem("Sal", category),
             createItem("Shoyu", category),
+            createItem("Suco Prats", category),
+            createItem("Suco de Uva", category),
             createItem("Vinho", category),
-            createItem("YoPro", category)
+            createItem("YoPro", category),
+            createItem("Água de Coco", category)
+        )
+    }
+
+    fun getHortifrutiList(): List<ShoppingItem> {
+        val category = Category.Hortifruti
+        return listOf(
+            createItem("Alface", category),
+            createItem("Batata (comum)", category),
+            createItem("Batata doce", category),
+            createItem("Beterraba", category),
+            createItem("Cebola", category),
+            createItem("Cenoura", category),
+            createItem("Laranja", category),
+            createItem("Limão", category),
+            createItem("Manga", category),
+            createItem("Pepino", category),
+            createItem("Tomate", category),
+            createItem("Uva", category)
         )
     }
 
@@ -70,6 +110,7 @@ object ShoppingListDataSource {
         return listOf(
             createItem("Álcool", category),
             createItem("Amaciante", category),
+            createItem("Balde", category),
             createItem("Buchinha azul", category),
             createItem("Buchinha verde", category),
             createItem("Detergente", category),
@@ -79,8 +120,10 @@ object ShoppingListDataSource {
             createItem("Pato (vaso)", category),
             createItem("Pinho Sol", category),
             createItem("Qboa", category),
+            createItem("Rodo", category),
             createItem("Sabão líquido", category),
-            createItem("Saco de lixo", category)
+            createItem("Saco de lixo", category),
+            createItem("Vassoura", category)
         )
     }
 

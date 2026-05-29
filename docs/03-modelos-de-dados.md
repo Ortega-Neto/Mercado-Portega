@@ -16,5 +16,6 @@ Uma `sealed class` que define as categorias pré-definidas no sistema.
 
 Categorias atuais:
 - `Food`: Comida 🍎
+- `Hortifruti`: Hortifruti 🥦
 - `Cleaning`: Produtos de Limpeza 🧽
 - `Hygiene`: Produtos de Higiene 🧴

@@ -50,7 +50,10 @@ class SelectionFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        adapter = ShoppingAdapter(emptyList()) { item ->
+        adapter = ShoppingAdapter(
+            items = emptyList(),
+            mode = ShoppingAdapter.AdapterMode.SELECTION
+        ) { item ->
             viewModel.toggleSelection(item)
         }
         binding.recyclerViewSelection.apply {

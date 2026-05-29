@@ -73,6 +73,7 @@ class ShoppingDataStore(private val context: Context) {
             return when {
                 typeName.contains("Food", true) ||
                     typeName.contains("Comida", true) -> Category.Food
+                typeName.contains("Hortifruti", true) -> Category.Hortifruti
                 typeName.contains("Cleaning", true) ||
                     typeName.contains("Limpeza", true) -> Category.Cleaning
                 typeName.contains("Hygiene", true) ||
